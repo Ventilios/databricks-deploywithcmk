@@ -1,0 +1,18 @@
+# Azure / developer-local
+.azure/
+.vscode/
+*.code-workspace
+
+# Bicep param files often contain environment-specific values
+*.bicepparam
+*.parameters.json
+
+# Logs / outputs
+*.log
+
+# Bicep build artifacts
+infra/steps/*.json
+
+# OS
+Thumbs.db
+.DS_Store
