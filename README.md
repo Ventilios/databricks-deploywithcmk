@@ -31,14 +31,11 @@ This repo deploys Azure Databricks and enables Customer-Managed Keys (CMK) in mu
 
 ## Deploy
 
-You can run these scripts from **any** working directory (they resolve paths relative to the script location).
-
 The examples below assume your current directory is the repo root. If you are *not* in the repo root, use the **absolute** `-File` examples shown under each section.
-
 This repo is designed around two supported scenarios:
 
 1) **Public (simple)**: no VNet injection, Key Vault is reachable via public endpoint.
-2) **Secure networking (VNet injection + firewall)**: Databricks uses VNet injection (no public IPs for compute) and Key Vault firewall is set to `Deny` while allowing the Databricks subnets.
+2) **VNet injection + firewall**: Databricks uses VNet injection (no public IPs for compute) and Key Vault stays on the public endpoint (`publicNetworkAccess=Enabled`) but is locked down with firewall rules (`defaultAction=Deny`) while allowing the Databricks subnets (might not be needed to lock further down) and allow Azure Services (`bypass=AzureServices`).
 
 ```powershell
 ./deploy.ps1 \
